@@ -1,3 +1,4 @@
-export * from './lib/async';
-export * from './lib/hash';
-export * from './lib/number';
+export { default as GameObject } from "./GameObject";
+export { default as Scene } from "./Scene";
+export { default as Transform } from "./Transform";
+export { default as Vector } from "./Vector";
