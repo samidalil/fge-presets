@@ -14,7 +14,7 @@ export const divide = ([x, y, z]: Vector, rhs: number) => create(x / rhs, y / rh
 
 export const magnitude = (vec: Vector) => Math.sqrt(sqrMagnitude(vec));
 
-export const multiply = ([x, y, z]: Vector, rhs: number) => create(x * rhs, y * rhs, z + rhs);
+export const multiply = ([x, y, z]: Vector, rhs: number) => create(x * rhs, y * rhs, z * rhs);
 
 export const sqrDistance = ([x, y, z]: Vector, [ox, oy, oz]: Vector) => (x - ox) ** 2 + (y - oy) ** 2 + (z - oz) ** 2;
 
