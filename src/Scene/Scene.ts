@@ -2,14 +2,14 @@ import { patch } from "fge";
 
 import GameObject from "../GameObject";
 import Transform from "../Transform";
-import type { Scene, SceneObject } from "../types";
+import type { SceneObjectType, SceneType } from "../types";
 
-export const add = (scene: Scene, sceneObject: SceneObject, parent?: SceneObject) =>
+export const add = (scene: SceneType, sceneObject: SceneObjectType, parent?: SceneObjectType) =>
   sceneObject.id in scene.hierarchy.parentByChildId
     ? null
     : unsafeAdd(scene, sceneObject, parent);
 
-export const create = (root = GameObject.create("root", { transform: Transform.create() })): Scene => ({
+export const create = (root = GameObject.create("root", { transform: Transform.create() })): SceneType => ({
   hierarchy: {
     childrenIdsById: { [root.id]: [] },
     parentByChildId: { [root.id]: "" },
@@ -18,16 +18,16 @@ export const create = (root = GameObject.create("root", { transform: Transform.c
   objects: [root],
 });
 
-export const instantiate = (scene: Scene, prefab: SceneObject, parent?: SceneObject) =>
+export const instantiate = (scene: SceneType, prefab: SceneObjectType, parent?: SceneObjectType) =>
   add(scene, GameObject.clone(prefab), parent);
 
-export const remove = (scene: Scene, sceneObject: SceneObject) =>
+export const remove = (scene: SceneType, sceneObject: SceneObjectType) =>
   sceneObject.id !== scene.hierarchy.rootId
     && sceneObject.id in scene.hierarchy.parentByChildId
     ? unsafeRemove(scene, sceneObject)
     : null;
 
-export const unsafeAdd = (scene: Scene, sceneObject: SceneObject, parent?: SceneObject) => {
+export const unsafeAdd = (scene: SceneType, sceneObject: SceneObjectType, parent?: SceneObjectType) => {
   const parentId = parent ? parent.id : scene.hierarchy.rootId;
 
   return patch(scene, {
@@ -42,7 +42,7 @@ export const unsafeAdd = (scene: Scene, sceneObject: SceneObject, parent?: Scene
   });
 };
 
-export const unsafeRemove = (scene: Scene, sceneObject: SceneObject): Scene => {
+export const unsafeRemove = (scene: SceneType, sceneObject: SceneObjectType): SceneType => {
   const parentId = scene.hierarchy.parentByChildId[sceneObject.id];
   const { [sceneObject.id]: _, ...parentByChildId } = scene.hierarchy.parentByChildId;
 

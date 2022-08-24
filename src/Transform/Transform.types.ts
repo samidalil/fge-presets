@@ -1,7 +1,7 @@
-import type { Vector } from "../types";
+import type { VectorType } from "../types";
 
-export type Transform = {
-  readonly position: Vector;
+export type TransformType = {
+  readonly position: VectorType;
   readonly rotation: number;
-  readonly scale: Vector;
+  readonly scale: VectorType;
 };

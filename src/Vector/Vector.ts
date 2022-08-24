@@ -1,34 +1,34 @@
-import type { Vector } from "../types";
+import type { VectorType } from "../types";
 
-export const add = ([x, y, z]: Vector, [ox, oy, oz]: Vector) => create(x + ox, y + oy, z + oz);
+export const add = ([x, y, z]: VectorType, [ox, oy, oz]: VectorType) => create(x + ox, y + oy, z + oz);
 
-export const addScalar = ([x, y, z]: Vector, rhs: number) => create(x + rhs, y + rhs, z + rhs);
+export const addScalar = ([x, y, z]: VectorType, rhs: number) => create(x + rhs, y + rhs, z + rhs);
 
-export const clone = (vec: Vector) => create(...vec);
+export const clone = (vec: VectorType) => create(...vec);
 
-export const create = (x = 0, y = 0, z = 0): Vector => [x, y, z];
+export const create = (x = 0, y = 0, z = 0): VectorType => [x, y, z];
 
-export const distance = (lhs: Vector, rhs: Vector) => Math.sqrt(sqrDistance(lhs, rhs));
+export const distance = (lhs: VectorType, rhs: VectorType) => Math.sqrt(sqrDistance(lhs, rhs));
 
-export const divide = ([x, y, z]: Vector, rhs: number) => create(x / rhs, y / rhs, z / rhs);
+export const divide = ([x, y, z]: VectorType, rhs: number) => create(x / rhs, y / rhs, z / rhs);
 
-export const magnitude = (vec: Vector) => Math.sqrt(sqrMagnitude(vec));
+export const magnitude = (vec: VectorType) => Math.sqrt(sqrMagnitude(vec));
 
-export const multiply = ([x, y, z]: Vector, rhs: number) => create(x * rhs, y * rhs, z * rhs);
+export const multiply = ([x, y, z]: VectorType, rhs: number) => create(x * rhs, y * rhs, z * rhs);
 
-export const sqrDistance = ([x, y, z]: Vector, [ox, oy, oz]: Vector) => (x - ox) ** 2 + (y - oy) ** 2 + (z - oz) ** 2;
+export const sqrDistance = ([x, y, z]: VectorType, [ox, oy, oz]: VectorType) => (x - ox) ** 2 + (y - oy) ** 2 + (z - oz) ** 2;
 
-export const sqrMagnitude = ([x, y, z]: Vector) => x ** 2 + y ** 2 + z ** 2;
+export const sqrMagnitude = ([x, y, z]: VectorType) => x ** 2 + y ** 2 + z ** 2;
 
-export const subtract = ([x, y, z]: Vector, [ox, oy, oz]: Vector) => create(x - ox, y - oy, z - oz);
+export const subtract = ([x, y, z]: VectorType, [ox, oy, oz]: VectorType) => create(x - ox, y - oy, z - oz);
 
-export const subtractScalar = ([x, y, z]: Vector, rhs: number) => create(x - rhs, y - rhs, z - rhs);
+export const subtractScalar = ([x, y, z]: VectorType, rhs: number) => create(x - rhs, y - rhs, z - rhs);
 
-export const x = ([x]: Vector) => x;
+export const x = ([x]: VectorType) => x;
 
-export const y = ([_, y]: Vector) => y;
+export const y = ([_, y]: VectorType) => y;
 
-export const z = ([_, __, z]: Vector) => z;
+export const z = ([_, __, z]: VectorType) => z;
 
 export const back = create(0, 0, -1);
 

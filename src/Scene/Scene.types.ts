@@ -1,18 +1,18 @@
-import type { GameObject, GameObjectId, Transform } from "../types";
+import type { GameObjectIdType, GameObjectType, TransformType } from "../types";
 
-export type Scene = {
-  readonly hierarchy: SceneHierarchy;
-  readonly objects: readonly SceneObject[];
+export type SceneType = {
+  readonly hierarchy: SceneHierarchyType;
+  readonly objects: readonly SceneObjectType[];
 };
 
-export type SceneHierarchy = {
-  readonly childrenIdsById: Record<GameObjectId, readonly GameObjectId[]>;
-  readonly parentByChildId: Record<GameObjectId, GameObjectId>;
-  readonly rootId: GameObjectId;
+export type SceneHierarchyType = {
+  readonly childrenIdsById: Record<GameObjectIdType, readonly GameObjectIdType[]>;
+  readonly parentByChildId: Record<GameObjectIdType, GameObjectIdType>;
+  readonly rootId: GameObjectIdType;
 };
 
-export type SceneObject = GameObject<SceneObjectConstraint>;
+export type SceneObjectType = GameObjectType<SceneObjectConstraintType>;
 
-export type SceneObjectConstraint = {
-  readonly transform: Transform;
+export type SceneObjectConstraintType = {
+  readonly transform: TransformType;
 };

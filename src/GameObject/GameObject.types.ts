@@ -1,10 +1,10 @@
 import type { AnyState } from "fge";
 
-export type GameObjectId = string;
+export type GameObjectIdType = string;
 
-export type GameObject<D extends AnyState> = {
+export type GameObjectType<D extends AnyState> = {
   readonly data: D;
-  readonly id: GameObjectId;
+  readonly id: GameObjectIdType;
   readonly name: string;
-  readonly parentId: GameObjectId;
+  readonly parentId: GameObjectIdType;
 };
